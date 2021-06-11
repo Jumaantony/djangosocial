@@ -131,7 +131,12 @@ LOGOUT_URL = 'logout'
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 # authentication backends
-AUTHENTICATION_BACKENDS = 'social_core.backends.facebook.FacebookOAuth2',
+AUTHENTICATION_BACKENDS =(
+    'social_core.backends.facebook.FacebookOAuth2',
+
+    'django.contrib.auth.backends.ModelBackend',
+
+)
 
 SOCIAL_AUTH_FACEBOOK_KEY = '2648223238772300'  # Facebook App ID
 SOCIAL_AUTH_FACEBOOK_SECRET = 'b153c7297a2c53d5c9c0a97bafc58e'  # Facebook App Secret
