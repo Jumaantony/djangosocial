@@ -131,15 +131,19 @@ LOGOUT_URL = 'logout'
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 # authentication backends
-AUTHENTICATION_BACKENDS =(
-    'social_core.backends.facebook.FacebookOAuth2',
-
+AUTHENTICATION_BACKENDS = (
+    # django authentication backends
     'django.contrib.auth.backends.ModelBackend',
 
+    # email authentication
+    'account.authentication.EmailAuthBackend',
+
+    # Facebook Authentication
+    'social_core.backends.facebook.FacebookOAuth2',
 )
 
-SOCIAL_AUTH_FACEBOOK_KEY = '2648223238772300'  # Facebook App ID
-SOCIAL_AUTH_FACEBOOK_SECRET = 'b153c7297a2c53d5c9c0a97bafc58e'  # Facebook App Secret
+SOCIAL_AUTH_FACEBOOK_KEY = '576032936717004'  # Facebook App ID
+SOCIAL_AUTH_FACEBOOK_SECRET = '031c31b600f7bf56b71e4ef3ef44892c'  # Facebook App Secret
 SOCIAL_AUTH_FACEBOOK_SCOPE = ['email']
 
 # serving media files
