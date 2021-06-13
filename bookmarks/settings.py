@@ -28,7 +28,7 @@ SECRET_KEY = '0n7s7#@i&ev3gjw!uw7&luy+3#o7r&#u6wod_ww-py2xhoj5hy'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost', 'socialdjango2.herokuapp.com']
+ALLOWED_HOSTS = ['https://socialdjango2.herokuapp.com','localhost', 'socialdjango2.herokuapp.com']
 # Application definition
 
 INSTALLED_APPS = [
