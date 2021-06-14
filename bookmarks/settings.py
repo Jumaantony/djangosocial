@@ -140,11 +140,19 @@ AUTHENTICATION_BACKENDS = (
 
     # Facebook Authentication
     'social_core.backends.facebook.FacebookOAuth2',
+
+    # Twitter Auth
+    'social_core.backends.twitter.TwitterOAuth',
 )
 
 SOCIAL_AUTH_FACEBOOK_KEY = '576032936717004'  # Facebook App ID
 SOCIAL_AUTH_FACEBOOK_SECRET = '031c31b600f7bf56b71e4ef3ef44892c'  # Facebook App Secret
 SOCIAL_AUTH_FACEBOOK_SCOPE = ['email']
+
+
+SOCIAL_AUTH_TWITTER_KEY = '4A5XqpGwDkbqGUWArPMpGMluN'  # Twitter API Key
+SOCIAL_AUTH_TWITTER_SECRET = 'O5ctzVFD9acDna8QRCPEukVgqPvUrW7tbgnZrYHIDqXp1FacRb'  # Twitter API Secret
+
 
 # serving media files
 MEDIA_URL = '/media/'
