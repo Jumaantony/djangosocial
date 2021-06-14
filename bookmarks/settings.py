@@ -153,6 +153,10 @@ SOCIAL_AUTH_FACEBOOK_SCOPE = ['email']
 SOCIAL_AUTH_TWITTER_KEY = '4A5XqpGwDkbqGUWArPMpGMluN'  # Twitter API Key
 SOCIAL_AUTH_TWITTER_SECRET = 'O5ctzVFD9acDna8QRCPEukVgqPvUrW7tbgnZrYHIDqXp1FacRb'  # Twitter API Secret
 
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '96922575871-dj5j4d6sc6gh6p01h6pb55aq2u3nq4ts.apps.googleusercontent.com'  # google
+# consumer key
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = 'n1H4SgpIwqhy8h1dMOpuXTIU'  # google consumer secret Secret
+
 
 # serving media files
 MEDIA_URL = '/media/'
