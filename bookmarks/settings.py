@@ -143,6 +143,9 @@ AUTHENTICATION_BACKENDS = (
 
     # Twitter Auth
     'social_core.backends.twitter.TwitterOAuth',
+
+    # GoogleOath2
+    'social_core.backends.google.GoogleOAuth2',
 )
 
 SOCIAL_AUTH_FACEBOOK_KEY = '576032936717004'  # Facebook App ID
@@ -160,6 +163,6 @@ SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = 'n1H4SgpIwqhy8h1dMOpuXTIU'  # google consumer
 
 # serving media files
 MEDIA_URL = '/media/'
-MEDIA_ROOT = 'media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 
 django_heroku.settings(locals())
