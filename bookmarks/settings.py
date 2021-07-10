@@ -28,11 +28,14 @@ SECRET_KEY = '0n7s7#@i&ev3gjw!uw7&luy+3#o7r&#u6wod_ww-py2xhoj5hy'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['https://socialdjango2.herokuapp.com','localhost', 'socialdjango2.herokuapp.com']
+ALLOWED_HOSTS = ['https://socialdjango2.herokuapp.com', 'localhost', 'socialdjango2.herokuapp.com']
 # Application definition
 
 INSTALLED_APPS = [
+    # created apps
     'account.apps.AccountConfig',
+    'images.apps.ImagesConfig',
+
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -152,14 +155,12 @@ SOCIAL_AUTH_FACEBOOK_KEY = '576032936717004'  # Facebook App ID
 SOCIAL_AUTH_FACEBOOK_SECRET = '031c31b600f7bf56b71e4ef3ef44892c'  # Facebook App Secret
 SOCIAL_AUTH_FACEBOOK_SCOPE = ['email']
 
-
 SOCIAL_AUTH_TWITTER_KEY = '4A5XqpGwDkbqGUWArPMpGMluN'  # Twitter API Key
 SOCIAL_AUTH_TWITTER_SECRET = 'O5ctzVFD9acDna8QRCPEukVgqPvUrW7tbgnZrYHIDqXp1FacRb'  # Twitter API Secret
 
 SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '96922575871-dj5j4d6sc6gh6p01h6pb55aq2u3nq4ts.apps.googleusercontent.com'  # google
 # consumer key
 SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = 'n1H4SgpIwqhy8h1dMOpuXTIU'  # google consumer secret Secret
-
 
 # serving media files
 MEDIA_URL = '/media/'
