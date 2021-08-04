@@ -1,6 +1,7 @@
 from django.db import models
 from django.conf import settings
 from django.utils.text import slugify
+from cloudinary.models import CloudinaryField
 
 
 # Create your models here.
@@ -12,7 +13,7 @@ class Image(models.Model):
     slug = models.SlugField(max_length=200,
                             blank=True)
     url = models.URLField()
-    image = models.ImageField(upload_to='images/%Y/%m/%d/')
+    image = CloudinaryField('images/%Y/%m/%d/')
     description = models.TextField(blank=True)
     created = models.DateField(auto_now_add=True,
                                db_index=True)

@@ -12,9 +12,17 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 
 from pathlib import Path
 import os
+
+# heroku configuration
 import django_heroku
 import dj_database_url
 from decouple import config
+
+# cloudinary imports
+
+import cloudinary
+import cloudinary.uploader
+import cloudinary.api
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve(strict=True).parent.parent
@@ -45,6 +53,9 @@ INSTALLED_APPS = [
     'social_django',
     'social.apps.django_app.default',
 
+    # cloudinary
+    'cloudinary',
+
 ]
 
 MIDDLEWARE = [
@@ -57,6 +68,13 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
+
+# cloudinary config
+cloudinary.config(
+    cloud_name="kisumu-org",
+    api_key="773424846215666",
+    api_secret="SaMBazwZvkBe9vubaIMFgjzdR7M",
+)
 
 ROOT_URLCONF = 'bookmarks.urls'
 
