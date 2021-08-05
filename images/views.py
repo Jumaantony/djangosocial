@@ -4,6 +4,7 @@ from django.contrib import messages
 from .forms import ImageCreateForm
 from django.shortcuts import get_object_or_404
 from .models import Image
+from cloudinary.forms import cl_init_js_callbacks
 
 
 @login_required

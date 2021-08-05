@@ -7,6 +7,7 @@ from django.urls import reverse
 
 # Create your models here.
 class Image(models.Model):
+    image = CloudinaryField('image')
     user = models.ForeignKey(settings.AUTH_USER_MODEL,
                              related_name='images_created',
                              on_delete=models.CASCADE)
@@ -14,7 +15,7 @@ class Image(models.Model):
     slug = models.SlugField(max_length=200,
                             blank=True)
     url = models.URLField()
-    image = CloudinaryField('images/%Y/%m/%d/')
+
     description = models.TextField(blank=True)
     created = models.DateField(auto_now_add=True,
                                db_index=True)
@@ -28,7 +29,7 @@ class Image(models.Model):
     def save(self, *args, **kwargs):
         if not self.slug:
             self.slug = slugify(self.title)
-        super().save(*args, **kwargs)
+        super(Image, self).save(*args, **kwargs)
 
     def get_absolute_url(self):
         return reverse('images:detail', args=[self.id, self.slug])
