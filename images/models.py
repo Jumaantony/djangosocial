@@ -7,7 +7,6 @@ from django.urls import reverse
 
 # Create your models here.
 class Image(models.Model):
-    image = CloudinaryField('image')
     user = models.ForeignKey(settings.AUTH_USER_MODEL,
                              related_name='images_created',
                              on_delete=models.CASCADE)
@@ -15,7 +14,7 @@ class Image(models.Model):
     slug = models.SlugField(max_length=200,
                             blank=True)
     url = models.URLField()
-
+    image = CloudinaryField('image')
     description = models.TextField(blank=True)
     created = models.DateField(auto_now_add=True,
                                db_index=True)

@@ -4,7 +4,6 @@ from django.contrib import messages
 from .forms import ImageCreateForm
 from django.shortcuts import get_object_or_404
 from .models import Image
-from cloudinary.forms import cl_init_js_callbacks
 
 
 @login_required
@@ -26,6 +25,7 @@ def image_create(request):
     else:
         # build form by the data provided by the bookmarklet via GET
         form = ImageCreateForm(data=request.GET)
+
     return render(request, 'images/image/create.html', {'section': 'images',
                                                         'form': form})
 
