@@ -13,15 +13,15 @@ def image_create(request):
         form = ImageCreateForm(request.POST, request.FILES)
         if form.is_valid():
             # form data is valid
-            new_item = form.save(commit=False)
+            image = form.save(commit=False)
             # assign current user to the item
-            new_item.user = request.user
-            new_item.save()
+            image.user = request.user
+            image.save()
 
             messages.success(request, 'Image added Successfully')
 
             # redirect to new created item detail view
-            return redirect(new_item.get_absolute_url())
+            return redirect(image.get_absolute_url())
     else:
         # build form by the data provided by the bookmarklet via GET
         form = ImageCreateForm(data=request.GET)
