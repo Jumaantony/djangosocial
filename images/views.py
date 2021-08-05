@@ -10,7 +10,7 @@ from .models import Image
 def image_create(request):
     if request.method == 'POST':
         # form is sent
-        form = ImageCreateForm(data=request.POST)
+        form = ImageCreateForm(request.POST, request.FILES)
         if form.is_valid():
             # form data is valid
             new_item = form.save(commit=False)
