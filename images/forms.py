@@ -34,9 +34,8 @@ class ImageCreateForm(forms.ModelForm):
 
         # download image from the given url
         response = request.urlopen(image_url)
-        image.save(image_name,
-                   ContentFile(response.read()),
-                   save=False)
+
         if commit:
-            image.save()
+            image.save(image_name,
+                       ContentFile(response.read()))
         return image
