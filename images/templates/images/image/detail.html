@@ -5,18 +5,18 @@
 
     <h1>{{ image.title }}</h1>
 
-    <img src="{{ image.image.url }}" class="image-detail">
+    <img src="{{ image.url }}" class="image-detail">
 
     {% with total_likes=image.users_like.count %}
         <div class="image-info">
-        <div>
+            <div>
 
-        <span class="count">
-        {{ total_likes }} like {{ total_likes|pluralize }}
-        </span>
+                <span class="count">
+                    {{ total_likes }} like {{ total_likes|pluralize }}
+                </span>
 
-        </div>
-        {{ image.description|linebreaks }}
+            </div>
+            {{ image.description|linebreaks }}
         </div>
 
         <div class="image-likes">
