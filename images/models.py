@@ -25,7 +25,7 @@ class Image(models.Model):
     def __str__(self):
         return self.title
 
-    def save(self, force_insert=False, force_update=False, *args, **kwargs):
+    def save(self, force_insert=True, force_update=True, *args, **kwargs):
         if not self.slug:
             self.slug = slugify(self.title)
         super(Image, self).save(force_insert, force_update, *args, **kwargs)
