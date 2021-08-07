@@ -53,6 +53,9 @@ INSTALLED_APPS = [
     'social_django',
     'social.apps.django_app.default',
 
+    # easy thumbnails
+    'easy_thumbnails',
+
     # cloudinary
     'cloudinary',
 
