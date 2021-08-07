@@ -23,8 +23,8 @@ class ImageCreateForm(forms.ModelForm):
         return url
 
     def save(self,
-             force_insert=False,
-             force_update=False,
+             force_insert=True,
+             force_update=True,
              commit=True):
         image = super().save(commit=False)
         image_url = self.cleaned_data['url']
