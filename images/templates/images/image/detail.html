@@ -6,9 +6,7 @@
 
     <h1>{{ image.title }}</h1>
 
-    <a href="{{ image.url }}">
-        <img src="{% thumbnail image 300X0%}" class="image-detail">
-    </a>
+    <img src="{{ image.image.url }}" class="image-detail">
 
 
     {% with total_likes=image.users_like.count %}
