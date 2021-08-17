@@ -6,7 +6,7 @@
 
     <h1>{{ image.title }}</h1>
 
-    <img src="{{ image.image.url }}" class="image-detail">
+    <img src="{{ image.url }}" class="image-detail">
 
 
     {% with total_likes=image.users_like.count users_like=image.users_like.all%}
