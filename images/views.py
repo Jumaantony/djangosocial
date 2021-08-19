@@ -9,8 +9,10 @@ from django.views.decorators.http import require_POST
 from common.decorators import ajax_required
 from django.http import HttpResponse
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.views.decorators.csrf import csrf_exempt
 
 
+@csrf_exempt
 @login_required
 def image_create(request):
     if request.method == 'POST':
