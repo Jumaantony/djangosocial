@@ -39,7 +39,7 @@ def image_create(request):
 def image_list(request):
     images = Image.objects.all()
     paginator = Paginator(images, 8)
-    page = request.Get.get('page')
+    page = request.Get('page')
     try:
         images = paginator.page(page)
     except PageNotAnInteger:
