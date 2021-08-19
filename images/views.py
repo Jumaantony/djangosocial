@@ -53,15 +53,13 @@ def image_list(request):
         # if page is out of range deliver the last page of the results
         images = paginator.page(paginator.num_pages)
     if request.is_ajax():
-        return render(request,
-                      'images/image/list_ajax.html', {
-                          'section': 'images',
-                          'images': images})
+        return render(request, 'images/image/list_ajax.html', {
+            'section': 'images',
+            'images': images})
 
-    return render(request,
-                  'images/image/list.html', {
-                      'section': 'images',
-                      'images': images})
+    return render(request, 'images/image/list.html', {
+        'section': 'images',
+        'images': images})
 
 
 @login_required
