@@ -55,11 +55,13 @@ def image_list(request):
     if request.is_ajax():
         return render(request, 'images/image/list_ajax.html', {
             'section': 'images',
-            'images': images})
+            'images': images,
+            'page': page})
 
     return render(request, 'images/image/list.html', {
         'section': 'images',
-        'images': images})
+        'images': images,
+        'page': page})
 
 
 @login_required
