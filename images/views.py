@@ -6,6 +6,7 @@ from django.shortcuts import get_object_or_404
 from .models import Image
 from django.http import JsonResponse
 from django.views.decorators.http import require_POST
+from common.decorators import ajax_required
 
 
 @login_required
@@ -41,6 +42,7 @@ def image_detail(request, id, slug):
                    'image': image})
 
 
+@ajax_required
 @login_required
 @require_POST
 def image_like(request):
