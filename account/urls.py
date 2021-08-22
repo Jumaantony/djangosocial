@@ -1,4 +1,4 @@
-from django.urls import path, include
+from django.urls import path
 from django.contrib.auth import views as auth_views
 from . import views
 
@@ -30,6 +30,10 @@ urlpatterns = [
     # register
     path('register/', views.register, name='register'),
 
-    # edit url
-    path('edit/', views.edit, name='edit')
+    # edit profile url
+    path('edit/', views.edit, name='edit'),
+
+    # User detal and List url
+    path('users/', views.user_list, name='user_list'),
+    path('users/<username>/', views.user_detail, name='user_detail'),
 ]
