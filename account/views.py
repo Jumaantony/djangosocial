@@ -87,7 +87,7 @@ def edit(request):
             messages.error(request, 'Error updating your Profile')
     else:
         user_form = UserEditForm(instance=request.user)
-        profile_form = ProfileEditForm(instance=request.user.profile)
+        profile_form = ProfileEditForm(instance=request.user)
     return render(request,
                   'account/edit.html',
                   {'user_form': user_form,
