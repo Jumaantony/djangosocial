@@ -33,7 +33,10 @@ urlpatterns = [
     # edit profile url
     path('edit/', views.edit, name='edit'),
 
-    # User detal and List url
+    # follow url
+    path('users/follow/', views.user_follow, name='user_follow'),
+
+    # User detail and List url
     path('users/', views.user_list, name='user_list'),
     path('users/<username>/', views.user_detail, name='user_detail'),
 ]
