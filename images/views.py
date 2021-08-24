@@ -9,6 +9,7 @@ from django.views.decorators.http import require_POST
 from common.decorators import ajax_required
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.views.decorators.csrf import csrf_exempt
+from actions.utils import create_action
 
 
 @csrf_exempt
@@ -23,6 +24,8 @@ def image_create(request):
             # assign current user to the item
             image.user = request.user
             image.save()
+            # adding action to the activity stream
+            create_action(request.user, 'boomkarked image', image)
 
             messages.success(request, 'Image added Successfully')
 
@@ -85,6 +88,8 @@ def image_like(request):
             image = Image.objects.get(id=image_id)
             if action == 'like':
                 image.users_like.add(request.user)
+                # adding action to the activity stream
+                create_action(request.user, 'likes', image)
             else:
                 image.users_like.remove(request.user)
             return JsonResponse({'status': 'ok'})

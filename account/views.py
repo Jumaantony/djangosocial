@@ -9,6 +9,8 @@ from django.shortcuts import get_object_or_404
 from django.contrib.auth.models import User
 from django.views.decorators.http import require_POST
 from common.decorators import ajax_required
+from actions.utils import create_action
+from actions.models import Action
 
 
 # Create your views here.
@@ -37,9 +39,18 @@ def user_login(request):
 
 @login_required
 def dashboard(request):
+    # Displaying all actions by default
+    actions = Action.objects.exculde(user=request.user)
+    following_ids = request.user.following.values_list('id',
+                                                       flat=True)
+    if following_ids:
+        # If user is following others, retreive only their actions
+        actions = actions.filter(user_id__in=following_ids)
+    actions = actions[:10]
     return render(request,
                   'account/dashboard.html',
-                  {'section': 'dashboard'})
+                  {'section': 'dashboard',
+                   'actions': actions})
 
 
 def register(request):
@@ -59,6 +70,9 @@ def register(request):
 
             # create the user profile
             Profile.objects.create(user=new_user)
+            # adding action to the activity stream
+            create_action(new_user, 'has created an account')
+
             return render(request,
                           'account/registration_done.html',
                           {'new_user': new_user})
@@ -128,6 +142,9 @@ def user_follow(request):
             else:
                 Contact.objects.filter(user_from=request.user,
                                        user_to=user).delete()
+                # adding action to the activity stream
+                create_action(request.user, 'is following', user)
+
             return JsonResponse({'status':'ok'})
         except User.DoesNotExist:
             return JsonResponse({'status': 'ok'})
