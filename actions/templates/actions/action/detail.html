@@ -14,9 +14,9 @@ class="item-img">
                     {% with target=action.target %}
 
                         {% if target.image %}
-                            {{ target.image as im }}
+                            {{ target.image }}
                             <a href="{{ target.get_absolute_url }}">
-                            <img src="{{ im.url }}" class="item-img">
+                            <img src="{{ target.image.url }}" class="item-img">
 </a>
                         {% endif %}
 
