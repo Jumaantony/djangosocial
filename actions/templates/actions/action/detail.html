@@ -3,11 +3,12 @@
         <div class="action">
             <div class="images">
                 {% if profile.photo %}
-                    {% user.profile.photo as im %}
-                    <a href="{{ user.get_absolute_url }}">
-                        <img src="{{ im.url }}" alt="{{ user.get_full_name }}"
-class="item-img">
-                    </a>
+                    {% with im = user.profile.photo %}
+                        <a href="{{ user.get_absolute_url }}">
+                            <img src="{{ im.url }}" alt="{{ user.get_full_name }}"
+    class="item-img">
+                        </a>
+                    {% endwith %}
                 {% endif %}
 
                 {% if action.target %}
