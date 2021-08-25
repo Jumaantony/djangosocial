@@ -47,7 +47,7 @@ def dashboard(request):
         # If user is following others, retreive only their actions
         actions = actions.filter(user_id__in=following_ids)
     # actions = actions[:10]
-    actions = actions.select_related('user', 'user__profile')[:10]
+    actions = actions.select_related('user', 'user__profile').prefetch_related('target')[:10]
 
     return render(request,
                   'account/dashboard.html',
@@ -59,7 +59,6 @@ def register(request):
     if request.method == 'POST':
         user_form = UserRegistrationForm(request.POST)
         if user_form.is_valid():
-
             # Create a new user object but avoid saving it yet
             new_user = user_form.save(commit=False)
 
@@ -150,7 +149,7 @@ def user_follow(request):
                 Contact.objects.filter(user_from=request.user,
                                        user_to=user).delete()
 
-            return JsonResponse({'status':'ok'})
+            return JsonResponse({'status': 'ok'})
         except User.DoesNotExist:
             return JsonResponse({'status': 'ok'})
     return JsonResponse({'status': 'ok'})
