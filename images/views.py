@@ -1,3 +1,4 @@
+import os
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
@@ -14,9 +15,7 @@ import redis
 from django.conf import settings
 
 # connect to redis
-r = redis.Redis(host=settings.REDIS_HOST,
-                port=settings.REDIS_PORT,
-                db=settings.REDIS_DB)
+r = redis.from_url(os.environ.get("REDIS_URL"))
 
 
 @csrf_exempt

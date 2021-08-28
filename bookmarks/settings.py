@@ -191,15 +191,14 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 
 # Redis Configuration
-REDIS_HOST = 'https://socialdjango2.herokuapp.com'
-REDIS_PORT = 6379
-REDIS_DB = 0
+# REDIS_HOST = 'https://socialdjango2.herokuapp.com'
+# REDIS_PORT = 6379
+# REDIS_DB = 0
 
 # absolute url overide for detaled user
 ABSOLUTE_URL_OVERRIDES = {
     'auth.user': lambda u: reverse_lazy('user_detail',
                                         args=[u.username])
 }
-
 
 django_heroku.settings(locals())
