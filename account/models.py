@@ -1,7 +1,10 @@
-from django.db import models
-from django.conf import settings
 from cloudinary.models import CloudinaryField
+from django.conf import settings
 from django.contrib.auth import get_user_model
+from django.db import models
+from django.dispatch import receiver  # Add this to use to allow social_Auth users to edit and save profile
+from django.contrib.auth.models import User
+from django.db.models.signals import post_save
 
 
 # Create your models here.
@@ -13,6 +16,16 @@ class Profile(models.Model):
 
     def __str__(self):
         return f'Profile for user {self.user.username}'
+
+    # This will allow social_Auth users to edit and save profiles.
+    @receiver(post_save, sender=User)
+    def create_user_profile(sender, instance, created, **kwargs):
+        if created:
+            Profile.objects.create(user=instance)
+
+    @receiver(post_save, sender=User)
+    def save_user_profile(sender, instance, **kwargs):
+        instance.profile.save()
 
 
 class Contact(models.Model):
