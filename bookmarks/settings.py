@@ -190,10 +190,16 @@ SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = 'n1H4SgpIwqhy8h1dMOpuXTIU'  # google consumer
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 
+# Redis Configuration
+REDIS_HOST = 'localhost'
+REDIS_PORT = 6379
+REDIS_DB = 0
+
 # absolute url overide for detaled user
 ABSOLUTE_URL_OVERRIDES = {
     'auth.user': lambda u: reverse_lazy('user_detail',
                                         args=[u.username])
 }
+
 
 django_heroku.settings(locals())
